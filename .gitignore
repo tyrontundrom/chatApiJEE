@@ -1,0 +1,11 @@
+# Project exclude paths
+/target/
+*.class
+*.war
+*.ear
+*.iml
+.idea/
+.project
+.classpath
+.settings/
+.gradle/
