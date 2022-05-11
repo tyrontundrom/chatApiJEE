@@ -28,7 +28,6 @@ class ChatController {
     @GET
     @Path("/name")
     public String getName() {
-        System.out.println("get");
        return "Mike";
     }
 }
