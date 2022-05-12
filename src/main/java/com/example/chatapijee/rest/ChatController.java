@@ -8,26 +8,19 @@ import lombok.Setter;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
 @Path("chat")
-@Setter
-@RequiredArgsConstructor
-class ChatController {
-
-    @Inject
-    private ChatService chatService;
-//    private User name;
-
-//    @POST
-//    public Response save() {
-//        name.setId(1L);
-//        name.setName("Mike");
-//        return Response.ok().build();
-//    }
+//@Setter
+//@RequiredArgsConstructor
+public class ChatController {
 
     @GET
-    @Path("/name")
+//    @Path("/name")
     public String getName() {
+        System.out.println("name");
        return "Mike";
     }
+
+
 }
