@@ -9,7 +9,7 @@ import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-class BinaryMapper implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
+public class BinaryMapper implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
     public static final String MEDIA_TYPE = "application/binary-data";
 
     public BinaryMapper() {
