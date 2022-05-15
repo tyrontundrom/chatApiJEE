@@ -22,11 +22,13 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 @Slf4j
 class Client {
     public static void main(String[] args) {
 //
+
         javax.ws.rs.client.Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080/chatApiJEE_war_exploded/api/chat");
         Response response = target.request().get();
@@ -37,13 +39,15 @@ class Client {
         ResteasyClient client1 = new ResteasyClientBuilderImpl()
                 .register(BinaryMapper.class)
                 .build();
-        ResteasyWebTarget target1 = client1.target("http://localhost:8080/chatApiJEE_war_exploded/api/user");
         UserDto user = new UserDto();
-        user.setName("Damian");
+        String damian = "Damian";
+        user.setName(damian);
+        ResteasyWebTarget target1 = client1.target("http://localhost:8080/chatApiJEE_war_exploded/api/user/");
+
         var response1 = target1.request()
                 //.accept(MediaType.APPLICATION_XML_TYPE)
                 .accept(BinaryMapper.MEDIA_TYPE)
                 .post(Entity.entity(user, MediaType.APPLICATION_JSON));
-        log.info("create user: " + user);
+        log.info("send user: " + user);
     }
 }

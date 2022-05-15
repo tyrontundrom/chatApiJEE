@@ -2,25 +2,29 @@ package com.example.chatapijee.repository;
 
 
 import com.example.chatapijee.model.User;
+import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.Optional;
 
-class UserRepository implements InterfaceUserRepository {
-    private Map<Integer, User> users = new HashMap<>();
-    private Integer id;
+@Singleton
+public class UserRepository implements InterfaceUserRepository {
+
+    @Setter
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
-    public void addUser(User user) {
-        users.put(nextId(),user);
+    public User save(User user) {
+        entityManager.persist(user);
+        return user;
     }
 
     @Override
-    public User getUser(Integer id) {
-        return users.get(id);
+    public Optional<User> getById(Long id) {
+        return Optional.ofNullable(entityManager.find(User.class, id));
     }
 
-    private Integer nextId() {
-        return id++;
-    }
 }

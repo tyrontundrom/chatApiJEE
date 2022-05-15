@@ -1,16 +1,39 @@
 package com.example.chatapijee.service;
 
 import com.example.chatapijee.model.User;
+import com.example.chatapijee.repository.InterfaceUserRepository;
+import com.example.chatapijee.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
-public interface UserService {
+import javax.inject.Inject;
 
-    void createUser();
+@RequiredArgsConstructor(onConstructor_ = @Inject)
+public class UserService implements InterfaceUserService {
 
-    void getUser();
+    private final UserRepository repository;
 
-    void updateUser();
+    @Override
+    public void createUser() {
 
-    void deleteUser();
+    }
 
-    void addUser(User user);
+    @Override
+    public void getUser() {
+
+    }
+
+    @Override
+    public void updateUser() {
+
+    }
+
+    @Override
+    public void deleteUser() {
+
+    }
+
+    @Override
+    public void save(User user) {
+        repository.save(user);
+    }
 }

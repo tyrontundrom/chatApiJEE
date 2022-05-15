@@ -3,9 +3,11 @@ package com.example.chatapijee.repository;
 
 import com.example.chatapijee.model.User;
 
+import java.util.Optional;
+
 public interface InterfaceUserRepository {
 
-    void addUser(User user);
+    User save(User user);
 
-    User getUser(Integer id);
+    Optional<User> getById(Long id);
 }
