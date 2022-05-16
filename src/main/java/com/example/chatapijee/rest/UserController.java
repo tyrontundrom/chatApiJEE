@@ -19,13 +19,12 @@ public class UserController {
 
 
     @POST
-//    @Path("{name}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response save(/*@PathParam("name") String name*/) {
-//        User user = new User(name);
-        User user = new User("Kamil");
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(User user) {
         interfaceUserService.save(user);
         System.out.println("create user");
         return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user")).build();
     }
+
+
 }

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class UserService implements InterfaceUserService {
 
-    private final UserRepository repository;
+    private final InterfaceUserRepository repository;
 
     @Override
     public void createUser() {
@@ -19,6 +19,7 @@ public class UserService implements InterfaceUserService {
 
     @Override
     public void getUser() {
+
 
     }
 

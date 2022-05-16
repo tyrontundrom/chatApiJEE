@@ -4,6 +4,7 @@ package com.example.chatapijee.repository;
 import com.example.chatapijee.model.User;
 import lombok.Setter;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
