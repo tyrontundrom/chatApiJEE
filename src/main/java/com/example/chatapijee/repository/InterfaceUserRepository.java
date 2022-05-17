@@ -9,5 +9,5 @@ public interface InterfaceUserRepository {
 
     User save(User user);
 
-    Optional<User> getById(Long id);
+    Optional<User> getById(String name);
 }

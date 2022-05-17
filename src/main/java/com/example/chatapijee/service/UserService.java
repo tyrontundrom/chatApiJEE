@@ -37,4 +37,9 @@ public class UserService implements InterfaceUserService {
     public void save(User user) {
         repository.save(user);
     }
+
+    @Override
+    public void getById(String name) {
+        repository.getById(name);
+    }
 }

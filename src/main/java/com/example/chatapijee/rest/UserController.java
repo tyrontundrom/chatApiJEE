@@ -26,5 +26,11 @@ public class UserController {
         return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user")).build();
     }
 
-
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response show(@PathParam("id") String name) {
+        interfaceUserService.getById(name);
+        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user/id")).build();
+    }
 }

@@ -24,8 +24,8 @@ public class UserRepository implements InterfaceUserRepository {
     }
 
     @Override
-    public Optional<User> getById(Long id) {
-        return Optional.ofNullable(entityManager.find(User.class, id));
+    public Optional<User> getById(String name) {
+        return Optional.ofNullable(entityManager.find(User.class, name));
     }
 
 }
