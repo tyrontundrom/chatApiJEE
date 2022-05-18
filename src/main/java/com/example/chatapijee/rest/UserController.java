@@ -19,11 +19,14 @@ public class UserController {
 
 
     @POST
+    @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(User user) {
+    public Response save(@PathParam("name") String name) {
+        User user = new User();
+        user.setName(name);
         interfaceUserService.save(user);
         System.out.println("create user");
-        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user")).build();
+        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user" + name)).build();
     }
 
     @GET
@@ -31,6 +34,6 @@ public class UserController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response show(@PathParam("id") String name) {
         interfaceUserService.getById(name);
-        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/user/id")).build();
+        return Response.ok().build();
     }
 }

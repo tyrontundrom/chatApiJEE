@@ -29,7 +29,7 @@ public class MessageController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response show(@PathParam("id") Long id) {
         interfaceMessageService.getById(id);
-        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/message")).build();
+        return Response.ok().build();
     }
 
     @GET
@@ -37,6 +37,6 @@ public class MessageController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response showHistory() {
         interfaceMessageService.getMessages();
-        return Response.created(URI.create("http://localhost:8080/chatApiJEE_war_exploded/api/message/history")).build();
+        return Response.ok().build();
     }
 }
