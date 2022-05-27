@@ -8,7 +8,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Optional;
+
 
 @Singleton
 public class UserRepository implements InterfaceUserRepository {

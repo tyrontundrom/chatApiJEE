@@ -4,7 +4,7 @@ import com.example.chatapijee.model.User;
 
 public interface InterfaceUserService {
 
-    void createUser();
+    void createUser(User user);
 
     void getUser();
 

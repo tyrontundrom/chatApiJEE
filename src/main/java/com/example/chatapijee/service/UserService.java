@@ -6,14 +6,21 @@ import com.example.chatapijee.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
+@Transactional
 @RequiredArgsConstructor(onConstructor_ = @Inject)
+@Singleton
 public class UserService implements InterfaceUserService {
 
-    private final InterfaceUserRepository repository;
+
+//    private final InterfaceUserRepository repository;
+    private final UserRepository repository;
 
     @Override
-    public void createUser() {
+    public void createUser(User user) {
 
     }
 

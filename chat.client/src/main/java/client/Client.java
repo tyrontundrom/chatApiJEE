@@ -29,25 +29,35 @@ class Client {
     public static void main(String[] args) {
 //
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("podaj imię");
+        String name = scanner.nextLine();
         javax.ws.rs.client.Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://localhost:8080/chatApiJEE_war_exploded/api/chat");
-        Response response = target.request().get();
+        WebTarget target = client.target("http://localhost:8080/chatApiJEE_war_exploded/api/user/" + name);
+        Response response = target.request().post(Entity.entity(name,MediaType.APPLICATION_JSON));
         String value = response.readEntity(String.class);
-        log.info("value: " + value);
+        log.info("user: " + name);
         response.close();
 
-        ResteasyClient client1 = new ResteasyClientBuilderImpl()
-                .register(BinaryMapper.class)
-                .build();
-        UserDto user = new UserDto();
-        String damian = "Damian";
-        user.setName(damian);
-        ResteasyWebTarget target1 = client1.target("http://localhost:8080/chatApiJEE_war_exploded/api/user/");
-
-        var response1 = target1.request()
-                //.accept(MediaType.APPLICATION_XML_TYPE)
-                .accept(BinaryMapper.MEDIA_TYPE)
-                .post(Entity.entity(user, MediaType.APPLICATION_JSON));
-        log.info("send user: " + user);
+//        javax.ws.rs.client.Client client = ClientBuilder.newClient();
+//        WebTarget target = client.target("http://localhost:8080/chatApiJEE_war_exploded/api/chat");
+//        Response response = target.request().get();
+//        String value = response.readEntity(String.class);
+//        log.info("value: " + value);
+//        response.close();
+//
+//        ResteasyClient client1 = new ResteasyClientBuilderImpl()
+//                .register(BinaryMapper.class)
+//                .build();
+//        UserDto user = new UserDto();
+//        String damian = "Damian";
+//        user.setName(damian);
+//        ResteasyWebTarget target1 = client1.target("http://localhost:8080/chatApiJEE_war_exploded/api/user/kamil");
+//
+//        var response1 = target1.request()
+//                //.accept(MediaType.APPLICATION_XML_TYPE)
+//                .accept(BinaryMapper.MEDIA_TYPE)
+//                .post(Entity.entity(user, MediaType.APPLICATION_JSON));
+//        log.info("send user: " + user);
     }
 }
