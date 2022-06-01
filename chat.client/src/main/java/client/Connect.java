@@ -29,19 +29,19 @@ class Connect {
                 "\nOdbieranie pliku \"#save\"" +
                 "\nHistoria \"#show\"");
         String fromConsole = input.nextLine();
-        while (!fromConsole.equals(QUIT_COMMAND)) {
-            handlers.sendMessage(fromConsole = input.nextLine());
-            System.out.println(name + ": " + fromConsole);
-            if (fromConsole.contains(PRIVATE_MESSAGE_COMMAND)) {
-                handlers.privateMessage(fromConsole);
-            } else if (fromConsole.contains(SEND_FILE_COMMAND)) {
-                handlers.sendFile();
-            } else if(fromConsole.contains(SAVE_FILE_COMMAND)) {
-                handlers.saveFile();
-            } else if (fromConsole.contains(SHOW_HISTORY_COMMAND)) {
-                handlers.history();
-            }
-        }
+//        while (!fromConsole.equals(QUIT_COMMAND)) {
+//            handlers.sendMessage(fromConsole = input.nextLine(), name);
+//            System.out.println(name + ": " + fromConsole);
+//            if (fromConsole.contains(PRIVATE_MESSAGE_COMMAND)) {
+//                handlers.privateMessage(fromConsole);
+//            } else if (fromConsole.contains(SEND_FILE_COMMAND)) {
+//                handlers.sendFile();
+//            } else if(fromConsole.contains(SAVE_FILE_COMMAND)) {
+//                handlers.saveFile();
+//            } else if (fromConsole.contains(SHOW_HISTORY_COMMAND)) {
+//                handlers.history();
+//            }
+//        }
     }
 
 

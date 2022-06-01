@@ -1,4 +1,4 @@
-package client;
+package com.example.chatapijee.service;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

@@ -1,16 +1,16 @@
 package com.example.chatapijee.rest;
 
-import com.example.chatapijee.model.Message;
-import com.example.chatapijee.model.User;
+import com.example.chatapijee.dto.PrivateMessageDto;
+import com.example.chatapijee.dto.PublicMessageDto;
 import com.example.chatapijee.repository.MessageRepoList;
-import com.example.chatapijee.service.InterfaceMessageService;
-import lombok.extern.slf4j.Slf4j;
+import com.example.chatapijee.service.ChatService;
+import com.example.chatapijee.service.JmsMessageService;
+import com.sun.istack.NotNull;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 
 @Path("messages")
 public class MessageController {
@@ -19,15 +19,26 @@ public class MessageController {
 //    private InterfaceMessageService interfaceMessageService;
     private static MessageRepoList repoList = new MessageRepoList();
 
+    @Inject
+    private ChatService chatService;
+
     @POST
-    @Path("{message}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@PathParam("message") String message) {
-        Message messageObj = new Message();
-        messageObj.setMessage(message);
-        repoList.addMessage(messageObj);
-        System.out.println("new message: " + message);
-        return Response.ok().entity(messageObj.toString()).build();
+    @Path("/message")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response save(PublicMessageDto publicMessageDto, @HeaderParam("username") String username) {
+        publicMessageDto.setSender(username);
+        chatService.send(publicMessageDto);
+        return Response.ok().build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/private")
+    public Response sendPrivateMessage(PrivateMessageDto privateMessageDto,
+                                       @NotNull @HeaderParam("username") String userName) {
+        privateMessageDto.setSender(userName);
+        chatService.sendToUser(privateMessageDto);
+        return Response.ok().build();
     }
 
 
